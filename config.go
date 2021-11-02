@@ -22,7 +22,7 @@ const (
 func LoadConfigFrom(configType ConfigType, args ...interface{}) error {
 	switch configType {
 	case FileType:
-		if cast.ToString(args[0]) == "" {
+		if len(args) == 0 || cast.ToString(args[0]) == "" {
 			err := ReadConfig("conf", "./conf", ".")
 			if err != nil {
 				return err
